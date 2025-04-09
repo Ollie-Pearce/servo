@@ -222,7 +222,7 @@ impl<'ln> TNode<LayoutElement<'ln>> for LayoutNode<'ln> {
 
     fn match_attr(&self, attr: &AttrSelector, test: |&str| -> bool) -> bool {
         self.with_element(|element| {
-            let name = if element.element.html_element_in_html_document() {
+            let name = if element.element.html_element_in_html_document() { //This is changed to be marked unsafe
                 attr.lower_name.as_slice()
             } else {
                 attr.name.as_slice()
@@ -337,7 +337,7 @@ impl<'le> TElement for LayoutElement<'le> {
         }
     }
 
-    fn get_hover_state(&self) -> bool {
+    fn get_hover_state(&self) -> bool { //Also changed to be marked unsafe
         self.element.node.get_hover_state()
     }
 }

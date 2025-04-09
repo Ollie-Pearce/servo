@@ -151,7 +151,7 @@ impl Element {
         }
     }
 
-    pub fn html_element_in_html_document(&self) -> bool {
+    pub fn html_element_in_html_document(&self) -> bool { //Takes an immutable reference to self
         self.namespace == namespace::HTML &&
         self.node.owner_doc().get().is_html_document
     }
